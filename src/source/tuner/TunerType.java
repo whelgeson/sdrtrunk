@@ -29,6 +29,7 @@ public enum TunerType
 	FUNCUBE_DONGLE_PRO( "Funcube Dongle Pro" ),
 	FUNCUBE_DONGLE_PRO_PLUS( "Funcube Dongle Pro Plus" ),
 	HACKRF( "HackRF" ),
+	LIMESDR("LimeSDR"),
 	RAFAELMICRO_R820T( "R820T" ),
 	RAFAELMICRO_R828D( "R828D" ),
 	RTL2832_VARIOUS( "Generic" ),

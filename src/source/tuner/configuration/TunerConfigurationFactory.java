@@ -32,6 +32,9 @@ import source.tuner.fcd.proplusV2.FCD2TunerEditor;
 import source.tuner.hackrf.HackRFTuner;
 import source.tuner.hackrf.HackRFTunerConfiguration;
 import source.tuner.hackrf.HackRFTunerEditor;
+import source.tuner.limesdr.LimeSDRTuner;
+import source.tuner.limesdr.LimeSDRTunerConfiguration;
+import source.tuner.limesdr.LimeSDRTunerEditor;
 import source.tuner.rtl.RTL2832Tuner;
 import source.tuner.rtl.e4k.E4KTunerConfiguration;
 import source.tuner.rtl.e4k.E4KTunerEditor;
@@ -58,6 +61,8 @@ public class TunerConfigurationFactory
 				return new FCD2TunerConfiguration( uniqueID, name );
 			case HACKRF:
 				return new HackRFTunerConfiguration( uniqueID, name );
+			case LIMESDR:
+				return new LimeSDRTunerConfiguration(uniqueID, name);
 			case RAFAELMICRO_R820T:
 				return new R820TTunerConfiguration( uniqueID, name );
 			default:
@@ -84,6 +89,8 @@ public class TunerConfigurationFactory
 				return new FCD2TunerEditor( model, (FCDTuner)tuner );
 			case HACKRF:
 				return new HackRFTunerEditor( model, (HackRFTuner)tuner );
+			case LIMESDR:
+				return new LimeSDRTunerEditor(model, (LimeSDRTuner) tuner);
 			case RAFAELMICRO_R820T:
 				return new R820TTunerEditor( model, (RTL2832Tuner)tuner );
 			case UNKNOWN:

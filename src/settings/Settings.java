@@ -33,8 +33,10 @@ import source.tuner.configuration.TunerConfiguration;
 import source.tuner.fcd.proV1.FCD1TunerConfiguration;
 import source.tuner.fcd.proplusV2.FCD2TunerConfiguration;
 import source.tuner.hackrf.HackRFTunerConfiguration;
+import source.tuner.limesdr.LimeSDRTunerConfiguration;
 import source.tuner.rtl.e4k.E4KTunerConfiguration;
 import source.tuner.rtl.r820t.R820TTunerConfiguration;
+
 
 /**
  * Support for persisting via JAXB all configured SDRTrunk settings
@@ -47,6 +49,7 @@ import source.tuner.rtl.r820t.R820TTunerConfiguration;
 			   FCD2TunerConfiguration.class,
 			   FileSetting.class,
 			   HackRFTunerConfiguration.class,
+			   LimeSDRTunerConfiguration.class,
 			   MapViewSetting.class,
 			   MapIcon.class,
 			   R820TTunerConfiguration.class,

@@ -33,6 +33,8 @@ import source.tuner.fcd.proV1.FCD1TunerController;
 import source.tuner.fcd.proplusV2.FCD2TunerController;
 import source.tuner.hackrf.HackRFTuner;
 import source.tuner.hackrf.HackRFTunerController;
+import source.tuner.limesdr.LimeSDRTuner;
+import source.tuner.limesdr.LimeSDRTunerController;
 import source.tuner.rtl.RTL2832Tuner;
 import source.tuner.rtl.RTL2832TunerController;
 import source.tuner.rtl.e4k.E4KTunerController;
@@ -165,6 +167,8 @@ public class TunerManager
     {
         if(device != null && descriptor != null)
         {
+            System.out.println(descriptor.idVendor());
+            System.out.println(descriptor.idProduct());
             TunerClass tunerClass = TunerClass.valueOf(descriptor.idVendor(),
                 descriptor.idProduct());
 
@@ -181,6 +185,8 @@ public class TunerManager
                 case HACKRF_ONE:
                 case RAD1O:
                     return initHackRFTuner(device, descriptor);
+                case LIME_SDR:
+                    return initLimeSDRTuner(device, descriptor);
                 case COMPRO_VIDEOMATE_U620F:
                 case COMPRO_VIDEOMATE_U650F:
                 case COMPRO_VIDEOMATE_U680F:
@@ -342,6 +348,18 @@ public class TunerManager
 
             return new TunerInitStatus(null,
                 "error constructing HackRF tuner controller");
+        }
+    }
+
+    private TunerInitStatus initLimeSDRTuner(Device device, DeviceDescriptor descriptor) {
+        try {
+            LimeSDRTunerController controller = new LimeSDRTunerController();
+            controller.initDevices();
+            LimeSDRTuner tuner = new LimeSDRTuner(controller);
+            return new TunerInitStatus(tuner, "LOADED");
+        } catch (SourceException se) {
+            mLog.error("couldn't construct LimeSDR controller/tuner", se);
+            return new TunerInitStatus(null, "error constructing LimeSDR tuner controller");
         }
     }
 
